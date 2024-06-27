@@ -8,4 +8,4 @@ rm policykey.pem
 rm policypublic.pem
 rm policy.signed.json
 rm hello.txt
-rm build-attestation.json
+#rm build-attestation.json
