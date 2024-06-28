@@ -18,7 +18,7 @@ This will...
 * download uds-package-mattermost source code and extract it
 * run a build using witness with the slsa attestor and the build keys. the attestations will be stored in the public archivista instance
 * template the policy file using the generated keys and the cmd.rego
-* verify attestations for target/uds-package-mattermost-9.9.0-uds.0/zarf-package-mattermost-amd64-9.9.0-uds.0.tar.zst
+* verify attestations for the zarf package `target/uds-package-mattermost-9.9.0-uds.0/zarf-package-mattermost-amd64-9.9.0-uds.0.tar.zst`
 
 
 # view the attestations
