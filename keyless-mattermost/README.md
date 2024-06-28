@@ -29,7 +29,7 @@ TIP: If you want to see the policy verification fail, you can change the line `-
 # view the attestations
 `./view.sh <shasum>`
 
-where <shasum> is printed in the log message near the end of run.sh
+where `<shasum>` is printed in the log message near the end of run.sh
 
 `INFO    Stored in archivista as fcf86d0804d3ed5b4e9da9994414b0804f9600c58e4b1cf25ae43b9044692d4f`
 
