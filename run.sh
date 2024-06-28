@@ -1,32 +1,29 @@
 #!/bin/bash
 
+mkdir target
 
 #generate key pair for signing attestations
-openssl genrsa -out buildkey.pem 2048
-openssl rsa -in buildkey.pem -outform PEM -pubout -out buildpublic.pem
+openssl genrsa -out target/buildkey.pem 2048
+openssl rsa -in target/buildkey.pem -outform PEM -pubout -out target/buildpublic.pem
 
+curl -L https://github.com/defenseunicorns/uds-package-mattermost/archive/refs/tags/v9.9.0-uds.0.tar.gz -o target/mattermost.tgz
+tar zxvf target/mattermost.tgz -C target
 
 #run a "build" and create signed attestation and store in archivista
-witness run -s build -a environment -k buildkey.pem --enable-archivista --archivista-server http://localhost:8082/  -- bash -c "echo 'hello' > hello.txt"
-
-
-#view the attestation
-cat build-attestation.json | jq -r .payload | base64 -d | jq .
-
+cd target/uds-package-mattermost-9.9.0-uds.0  && witness run -s build -a slsa -k ../../target/buildkey.pem --enable-archivista -- bash -c "uds run create-mm-test-bundle"
+cd -
 
 #template the policy
 ./template_policy.sh
 
-
 #generate a key pair for signing the policy
-openssl genrsa -out policykey.pem 2048
-openssl rsa -in policykey.pem -outform PEM -pubout -out policypublic.pem
+openssl genrsa -out target/policykey.pem 2048
+openssl rsa -in target/policykey.pem -outform PEM -pubout -out target/policypublic.pem
 
 
 #sign the policy
-witness sign -k policykey.pem -f policy.json -o policy.signed.json
+witness sign -k target/policykey.pem -f target/policy.json -o target/policy.signed.json
 
 
 #verify the attestations
-witness verify -k policypublic.pem -p policy.signed.json --enable-archivista --archivista-server http://localhost:8082/ -f hello.txt
-
+./verify.sh target/uds-package-mattermost-9.9.0-uds.0/zarf-package-mattermost-amd64-9.9.0-uds.0.tar.zst

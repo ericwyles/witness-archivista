@@ -6,6 +6,6 @@ deny[msg] {
 }
 
 deny[msg] {
-    input.cmd[2] != "echo 'hello' > hello.txt"
+    input.cmd[2] != "uds run create-mm-test-bundle"
     msg := "cmd not correct"
 }
