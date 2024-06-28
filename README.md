@@ -9,7 +9,7 @@ brew install wget
 brew install witness
 ```
 
-# generate everything, attest, sign, store, and verify against public archivista instance
+# build, attest, verify
 `./run.sh`
 
 This will...
@@ -32,8 +32,8 @@ where <shasum> is printed in the log message near the end of run.sh
 `./verify.sh <fileName>`
 
 Examples: 
-`./verify.sh target/uds-package-mattermost-9.9.0-uds.0/zarf-package-dev-namespace-amd64-0.1.0.tar.zst`
-`./verify.sh target/uds-package-mattermost-9.9.0-uds.0/bundle/uds-bundle-mattermost-test-amd64-9.9.0-uds.0.tar.zst`
+* `./verify.sh target/uds-package-mattermost-9.9.0-uds.0/zarf-package-dev-namespace-amd64-0.1.0.tar.zst`
+* `./verify.sh target/uds-package-mattermost-9.9.0-uds.0/bundle/uds-bundle-mattermost-test-amd64-9.9.0-uds.0.tar.zst`
 
 This will work for any file that was generated in the cwd (`target/uds-package-mattermost-9.9.0-uds.0`) or any subdir as part of the build.
 
