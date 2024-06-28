@@ -24,7 +24,7 @@ This will...
     * attestations are retrieved from archivista
     * the signed policy from the target directory is used to verify the command that was executed to build mattermost
 
-TIP: If you want to see the policy verification fail, you can change the run to sh `-- bash -c "uds run create-mm-test-bundle"` to `-- bash -c "uds run create-mm-package"` -- this will still build the mattermost package using a different command and the artifact will fail policy validation
+TIP: If you want to see the policy verification fail, you can change the line `-- bash -c "uds run create-mm-test-bundle"` in run.sh to `-- bash -c "uds run create-mm-package"` -- this will still build the mattermost package using a different command and the artifact will fail policy validation
 
 # view the attestations
 `./view.sh <shasum>`
