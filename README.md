@@ -31,9 +31,11 @@ where <shasum> is printed in the log message near the end of run.sh
 # verify attestations for an arbitrary file
 `./verify.sh <fileName>`
 
-Example: `./verify.sh target/uds-package-mattermost-9.9.0-uds.0/zarf-package-dev-namespace-amd64-0.1.0.tar.zst`
+Examples: 
+`./verify.sh target/uds-package-mattermost-9.9.0-uds.0/zarf-package-dev-namespace-amd64-0.1.0.tar.zst`
+`./verify.sh target/uds-package-mattermost-9.9.0-uds.0/bundle/uds-bundle-mattermost-test-amd64-9.9.0-uds.0.tar.zst`
 
-This will work for any file that was generated in the cwd (`target/uds-package-mattermost-9.9.0-uds.0`) as part of the build.
+This will work for any file that was generated in the cwd (`target/uds-package-mattermost-9.9.0-uds.0`) or any subdir as part of the build.
 
 # clean up
 `./clean.sh`
